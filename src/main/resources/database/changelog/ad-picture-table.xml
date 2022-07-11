@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet author="ntovernic" id="ad-pictures-table">
+        <createTable tableName="ad_picture">
+            <column name="ad_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_ad_picture" references="ad(id)"/>
+            </column>
+            <column name="picture" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="ad_picture"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
